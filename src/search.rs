@@ -16,11 +16,11 @@ pub fn binary_search<T: Ord>(arr: &[T], el: T) -> bool {
     let mut remaining = arr;
     loop {
         let middle = remaining.len() / 2;
-        match (remaining, el.cmp(&remaining[middle])) {
-            (_, Ordering::Equal) => return true,
-            ([_], _) => return false,
-            (_, Ordering::Less) => remaining = &remaining[..middle],
-            (_, Ordering::Greater) => remaining = &remaining[middle..],
+        match el.cmp(&remaining[middle]) {
+            Ordering::Equal => return true,
+            _ if remaining.len() == 1 => return false,
+            Ordering::Less => remaining = &remaining[..middle],
+            Ordering::Greater => remaining = &remaining[middle..],
         };
     }
 }
