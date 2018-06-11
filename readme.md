@@ -1,4 +1,4 @@
-#bigo
+# bigo
 
 Scratch for Impostor's Handbook Big O content
 
